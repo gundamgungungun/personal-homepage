@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>许子涵 · 个人主页</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      /* Colors */
+      --color-deep-forest: #000a06;
+      --color-pine-bark: #0a1a14;
+      --color-charcoal: #161818;
+      --color-abyssal-indigo: #01051b;
+      --color-paper-white: #ffffff;
+      --color-ash-gray: #5e6262;
+      --color-smoke: #828282;
+      --color-silver: #d9d9d9;
+      --color-pure-black: #000000;
+      --color-electric-mint: #7affb4;
+      --color-mint-whisper: #e3ffef;
+      --color-bioluminescent-bloom: #0a3a2b;
+      --gradient-bioluminescent-bloom: radial-gradient(circle, rgba(0, 100, 70, 0.4) 0%, rgba(0, 60, 40, 0.2) 30%, rgba(0, 30, 20, 0.08) 55%, rgba(0, 0, 0, 0) 75%);
+      --gradient-pine-to-abyss: linear-gradient(rgb(15, 58, 43) 0%, rgb(0, 10, 7) 100%);
+
+      /* Typography */
+      --font-ui: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+      /* Radii */
+      --radius-cards: 16px;
+      --radius-icons: 4px;
+      --radius-inputs: 8px;
+      --radius-buttons: 999px;
+
+      /* Layout */
+      --page-max-width: 1200px;
+      --section-gap: 80px;
+      --card-padding: 24px;
+
+      /* Shadows */
+      --shadow-subtle: rgba(0, 0, 0, 0.02) 0px 3px 3px 0px, rgba(0, 0, 0, 0.01) 0px 7px 7px 0px, rgba(0, 0, 0, 0.01) 0px 14px 14px 0px, rgba(0, 0, 0, 0.01) 0px 25px 24px 0px;
+      --shadow-subtle-2: rgba(1, 5, 27, 0.06) 0px 0px 0px 1px inset;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-ui);
+      background: var(--color-deep-forest);
+      color: var(--color-paper-white);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      max-width: var(--page-max-width);
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* ---------- 公告条 ---------- */
+    .announcement {
+      background: var(--color-deep-forest);
+      text-align: center;
+      padding: 8px 16px;
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--color-paper-white);
+    }
+    .announcement .dot {
+      display: inline-block;
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--color-electric-mint);
+      margin-right: 8px;
+      vertical-align: middle;
+      box-shadow: 0 0 8px rgba(122, 255, 180, 0.8);
+    }
+    .announcement .arrow { color: var(--color-electric-mint); margin-left: 4px; }
+
+    /* ---------- 导航栏 ---------- */
+    nav {
+      background: var(--color-deep-forest);
+      border-bottom: 1px solid rgba(1, 5, 27, 0.6);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    nav .inner {
+      max-width: var(--page-max-width);
+      margin: 0 auto;
+      height: 80px;
+      padding: 0 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .logo .glyph {
+      width: 22px; height: 22px;
+      border-radius: var(--radius-icons);
+      background: var(--color-electric-mint);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-deep-forest);
+      font-size: 13px;
+      font-weight: 700;
+    }
+    nav ul {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    nav ul a {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--color-paper-white);
+      transition: color 0.2s;
+    }
+    nav ul a:hover { color: var(--color-electric-mint); }
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .nav-status {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--color-ash-gray);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .nav-status .dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--color-electric-mint);
+      box-shadow: 0 0 8px rgba(122, 255, 180, 0.8);
+    }
+
+    /* ---------- 按钮 ---------- */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: var(--radius-buttons);
+      font-family: var(--font-ui);
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.14px;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .btn:hover { opacity: 0.85; }
+    .btn:active { transform: translateY(1px); }
+    .btn-primary {
+      background: var(--color-electric-mint);
+      color: var(--color-deep-forest);
+      box-shadow: var(--shadow-subtle-2);
+    }
+    .btn-ghost {
+      background: transparent;
+      color: var(--color-paper-white);
+      border-color: var(--color-paper-white);
+    }
+
+    /* ---------- 首屏 ---------- */
+    .hero {
+      text-align: center;
+      padding: 120px 0 80px;
+    }
+    .hero .hello {
+      font-size: 12px;
+      font-family: var(--font-mono);
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--color-smoke);
+      margin-bottom: 32px;
+    }
+    .hero h1 {
+      font-weight: 300;
+      font-size: 68px;
+      line-height: 1.04;
+      letter-spacing: -0.03em;
+      margin-bottom: 24px;
+      color: var(--color-paper-white);
+    }
+    .hero .subtitle {
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--color-ash-gray);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    .hero .subtitle .dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--color-electric-mint);
+      box-shadow: 0 0 8px rgba(122, 255, 180, 0.8);
+    }
+    .hero .bio {
+      max-width: 60ch;
+      margin: 0 auto 44px;
+      color: var(--color-ash-gray);
+      font-size: 16px;
+    }
+    .hero .cta-row {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    /* ---------- 区块通用 ---------- */
+    section { padding: var(--section-gap) 0; }
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--color-smoke);
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    .section-title {
+      font-weight: 300;
+      font-size: 36px;
+      line-height: 1.16;
+      letter-spacing: -0.02em;
+      text-align: center;
+      margin-bottom: 48px;
+      color: var(--color-paper-white);
+    }
+    .section-desc {
+      max-width: 60ch;
+      margin: -24px auto 48px;
+      text-align: center;
+      color: var(--color-ash-gray);
+      font-size: 16px;
+    }
+
+    /* ---------- 关于 ---------- */
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
+    }
+    .info-card {
+      background: var(--color-pine-bark);
+      border: 1px solid var(--color-abyssal-indigo);
+      border-radius: var(--radius-cards);
+      padding: var(--card-padding);
+    }
+    .info-card .icon {
+      width: 24px; height: 24px;
+      color: var(--color-electric-mint);
+      margin-bottom: 16px;
+    }
+    .info-card .label {
+      font-size: 12px;
+      font-family: var(--font-mono);
+      letter-spacing: 0.12px;
+      color: var(--color-smoke);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+    .info-card .value {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--color-paper-white);
+    }
+
+    /* ---------- 技能 ---------- */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+    .skill-card {
+      background: var(--color-pine-bark);
+      border: 1px solid var(--color-abyssal-indigo);
+      border-radius: var(--radius-cards);
+      padding: var(--card-padding);
+    }
+    .skill-card .icon {
+      width: 24px; height: 24px;
+      color: var(--color-electric-mint);
+      margin-bottom: 16px;
+    }
+    .skill-card h3 {
+      font-size: 20px;
+      font-weight: 500;
+      letter-spacing: -0.4px;
+      margin-bottom: 12px;
+      color: var(--color-paper-white);
+    }
+    .skill-card p {
+      font-size: 14px;
+      color: var(--color-ash-gray);
+      line-height: 1.42;
+    }
+    .skill-card .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+    .skill-card .tag {
+      font-size: 12px;
+      font-weight: 500;
+      padding: 4px 12px;
+      border-radius: 100px;
+      background: transparent;
+      border: 1px solid var(--color-abyssal-indigo);
+      color: var(--color-paper-white);
+    }
+
+    /* ---------- 项目展示 ---------- */
+    .showcase {
+      background: var(--gradient-bioluminescent-bloom);
+    }
+    .showcase-card {
+      background: var(--color-pine-bark);
+      border: 1px solid var(--color-abyssal-indigo);
+      border-radius: var(--radius-cards);
+      padding: var(--card-padding);
+      display: flex;
+      gap: 24px;
+      box-shadow: var(--shadow-subtle);
+    }
+    .rail {
+      width: 120px;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .rail-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: var(--radius-icons);
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--color-ash-gray);
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    .rail-item svg { width: 18px; height: 18px; flex-shrink: 0; }
+    .rail-item.active {
+      background: var(--color-mint-whisper);
+      color: var(--color-deep-forest);
+    }
+    .rail-item:not(.active):hover { color: var(--color-paper-white); }
+
+    .panel { flex: 1; min-width: 0; }
+    .filter-bar {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      height: 28px;
+      padding: 0 12px;
+      font-size: 12px;
+      font-weight: 500;
+      border: 1px solid var(--color-abyssal-indigo);
+      border-radius: var(--radius-icons);
+      color: var(--color-paper-white);
+      cursor: pointer;
+    }
+    .chip b {
+      font-family: var(--font-mono);
+      font-weight: 400;
+      font-size: 12px;
+    }
+    .chip.active {
+      background: var(--color-mint-whisper);
+      color: var(--color-deep-forest);
+      border-color: transparent;
+    }
+
+    .project-list { display: flex; flex-direction: column; }
+    .project-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 24px;
+      padding: 20px 0;
+      border-bottom: 1px solid rgba(1, 5, 27, 0.6);
+    }
+    .project-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .project-row:first-child { padding-top: 0; }
+    .project-row h3 {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--color-paper-white);
+      margin-bottom: 6px;
+    }
+    .project-row p {
+      font-size: 14px;
+      color: var(--color-ash-gray);
+      line-height: 1.42;
+      max-width: 56ch;
+    }
+    .project-row .year {
+      flex-shrink: 0;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--color-smoke);
+      letter-spacing: 0.01em;
+    }
+
+    /* ---------- 联系 ---------- */
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .contact-links .btn { font-size: 14px; }
+
+    footer {
+      background: var(--color-deep-forest);
+      border-top: 1px solid rgba(1, 5, 27, 0.6);
+      padding: 48px 0 60px;
+      text-align: center;
+      color: var(--color-smoke);
+      font-size: 13px;
+      font-family: var(--font-mono);
+      letter-spacing: 0.01em;
+    }
+    footer .heart { color: var(--color-electric-mint); }
+
+    /* ---------- 滚动动画 ---------- */
+    .reveal {
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    @media (max-width: 720px) {
+      nav ul { display: none; }
+      .nav-status { display: none; }
+      .hero h1 { font-size: 48px; letter-spacing: -0.02em; }
+      .hero { padding: 80px 0 56px; }
+      section { padding: 56px 0; }
+      .showcase-card { flex-direction: column; }
+      .rail { width: 100%; flex-direction: row; overflow-x: auto; }
+      .rail-item { flex-shrink: 0; }
+      .project-row { flex-direction: column; gap: 8px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 公告条 -->
+  <div class="announcement">
+    <span class="dot"></span>目前可联系，欢迎交流合作<span class="arrow">→</span>
+  </div>
+
+  <!-- 导航栏 -->
+  <nav>
+    <div class="inner">
+      <a class="logo" href="#"><span class="glyph">许</span>许子涵</a>
+      <ul>
+        <li><a href="#about">关于</a></li>
+        <li><a href="#skills">技能</a></li>
+        <li><a href="#projects">项目</a></li>
+        <li><a href="#contact">联系</a></li>
+      </ul>
+      <div class="nav-actions">
+        <span class="nav-status"><span class="dot"></span>Open to work</span>
+        <a class="btn btn-primary" href="#contact">联系我</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 首屏 -->
+  <header class="hero container">
+    <p class="hello">Hello, I am</p>
+    <h1>我是许子涵</h1>
+    <p class="subtitle"><span class="dot"></span>AI 产品经理</p>
+    <p class="bio">专注于 AI 产品的规划与落地，热爱用技术解决真实问题。这里记录我的思考、项目与日常。</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#projects">查看项目</a>
+      <a class="btn btn-ghost" href="#contact">联系我</a>
+    </div>
+  </header>
+
+  <!-- 关于 -->
+  <section id="about" class="container">
+    <p class="section-label reveal">About</p>
+    <h2 class="section-title reveal">关于我</h2>
+    <p class="section-desc reveal">我是一名 AI 产品经理，关注人工智能技术如何转化为有价值的用户产品。相信简洁的设计与清晰的逻辑，喜欢在复杂的系统中寻找简单的答案。</p>
+    <div class="info-grid">
+      <div class="info-card reveal">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+        <div class="label">Location</div>
+        <div class="value">中国 · 上海</div>
+      </div>
+      <div class="info-card reveal">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a4 4 0 0 1 8 0v2"/></svg>
+        <div class="label">Role</div>
+        <div class="value">AI 产品经理</div>
+      </div>
+      <div class="info-card reveal">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7l8-4z"/></svg>
+        <div class="label">Education</div>
+        <div class="value">本科</div>
+      </div>
+      <div class="info-card reveal">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+        <div class="label">Interests</div>
+        <div class="value">AI · 阅读 · 单机游戏</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 技能 -->
+  <section id="skills" class="container">
+    <p class="section-label reveal">Skills</p>
+    <h2 class="section-title reveal">技能栈</h2>
+    <div class="skills-grid">
+      <div class="skill-card reveal">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l2.4 4.9 5.4.8-3.9 3.8.9 5.4L12 14.4 7.2 16.9l.9-5.4L4.2 7.7l5.4-.8L12 2z"/></svg>
+        <h3>产品能力</h3>
+        <p>从 0 到 1 定义并落地 AI 产品，聚焦真实场景与用户价值。</p>
+        <div class="tags">
+          <span class="tag">产品规划</span>
+          <span class="tag">需求分析</span>
+          <span class="tag">AI 应用设计</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16v16H4z"/><path d="M7 15l3-3 2 2 5-5"/></svg>
+        <h3>研究能力</h3>
+        <p>用数据与用户洞察驱动决策，在复杂系统中寻找简单答案。</p>
+        <div class="tags">
+          <span class="tag">用户研究</span>
+          <span class="tag">数据分析</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="5" r="2.5"/><path d="M12 8v6"/><path d="M9 12h6"/><circle cx="12" cy="19" r="2.5"/></svg>
+        <h3>设计与管理</h3>
+        <p>原型设计到项目交付全流程把控，保证简洁与清晰的体验。</p>
+        <div class="tags">
+          <span class="tag">原型设计</span>
+          <span class="tag">项目管理</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 项目 -->
+  <section id="projects" class="showcase">
+    <div class="container">
+      <p class="section-label reveal">Projects</p>
+      <h2 class="section-title reveal">我的项目</h2>
+      <div class="showcase-card reveal">
+        <div class="rail">
+          <div class="rail-item active">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="8" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/><rect x="13" y="13" width="8" height="8" rx="1.5"/></svg>
+            全部
+          </div>
+          <div class="rail-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l2.4 4.9 5.4.8-3.9 3.8.9 5.4L12 14.4 7.2 16.9l.9-5.4L4.2 7.7l5.4-.8L12 2z"/></svg>
+            AI 助手
+          </div>
+          <div class="rail-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+            客服系统
+          </div>
+          <div class="rail-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16v16H4z"/><path d="M7 15l3-3 2 2 5-5"/></svg>
+            数据平台
+          </div>
+        </div>
+        <div class="panel">
+          <div class="filter-bar">
+            <span class="chip active">全部 <b>3</b></span>
+            <span class="chip">2024 <b>1</b></span>
+            <span class="chip">2023 <b>2</b></span>
+          </div>
+          <div class="project-list">
+            <div class="project-row">
+              <div>
+                <h3>AI 智能助手产品</h3>
+                <p>负责产品规划与需求定义，从 0 到 1 完成一款面向用户的 AI 助手。</p>
+              </div>
+              <span class="year">2024</span>
+            </div>
+            <div class="project-row">
+              <div>
+                <h3>智能客服系统</h3>
+                <p>主导智能客服产品的功能设计，提升用户问题解决效率。</p>
+              </div>
+              <span class="year">2023</span>
+            </div>
+            <div class="project-row">
+              <div>
+                <h3>数据洞察平台</h3>
+                <p>结合 AI 能力，搭建帮助团队快速获取数据洞察的产品。</p>
+              </div>
+              <span class="year">2023</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 联系 -->
+  <section id="contact" class="container">
+    <p class="section-label reveal">Contact</p>
+    <h2 class="section-title reveal">联系我</h2>
+    <div class="contact-links reveal">
+      <a class="btn btn-primary" href="https://wx.mail.qq.com/home/index?sid=zc01eYz5S28urkl4AC54YQAA#/list/1">邮箱</a>
+      <a class="btn btn-ghost" href="https://github.com/gundamgungungun" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a class="btn btn-ghost" href="https://www.woshipm.com/me/posts" target="_blank">人人都是产品经理</a>
+      <a class="btn btn-ghost" href="https://mp.weixin.qq.com/s/JslXP9JX5455_WhnaXCJRQ" target="_blank">公众号</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 许子涵 · 保持简单 <span class="heart">●</span></p>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
